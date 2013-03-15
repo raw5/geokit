@@ -1,10 +1,22 @@
-require "bundler/gem_tasks"
-require 'rake/testtask'
+# -*- ruby -*-
 
-task :default => :test
+require 'rubygems'
+require 'hoe'
+require './lib/geokit.rb'
 
-Rake::TestTask.new do |t|
-  t.libs << "test"
-  t.test_files = FileList['test/test*.rb']
-  t.verbose = true
+# undefined method `empty?' for nil:NilClass
+# /Library/Ruby/Site/1.8/rubygems/specification.rb:886:in `validate' 
+class NilClass
+  def empty?
+    true
+  end
+end 
+
+project=Hoe.new('geokit', Geokit::VERSION) do |p|
+  #p.rubyforge_name = 'geokit' # if different than lowercase project name
+  p.developer('Andre Lewis', 'andre@earthcode.com')
+  p.summary="Geokit provides geocoding and distance calculation in an easy-to-use API"
 end
+
+
+# vim: syntax=Ruby
