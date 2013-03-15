@@ -253,7 +253,7 @@ module Geokit
         url = if GeoKit::Geocoders::geocoder_us
           "http://#{GeoKit::Geocoders::geocoder_us}@geocoder.us/member/service/csv/geocode"
         else
-          "http://geocoder.us/service/csv/geocode"
+          "http://rpc.geocoder.us/service/csv"
         end
 
         url = "#{url}?#{query}"
